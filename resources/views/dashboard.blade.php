@@ -9,11 +9,10 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    @if ($isregistration === 0)
+                    @if ($isregistration === 1)
                         <table>
                             <thead>
                             <tr>
-                                <th> user_id </th>
                                 <th> day </th>
                                 <th> auth_code </th>
                                 <th> status </th>
@@ -22,13 +21,14 @@
 
                                 @foreach($test as $key => $value)
                                     <tr>
-                                        <td>{{$value->user_id}}</td>
-                                        <td>{{$value->rdate}}</td>
+                                        <td>{{$value->day}}</td>
                                         <td>{{$value->auth_code}}</td>
                                         @if($value->status === 1)
-                                            <td>varifyed</td>
+                                            <td>passed</td>
+                                        @elseif($value->status === 2)
+                                            <td>verified</td>
                                         @else
-                                            <td><a>0</a></td>
+                                            <td>cancle</td>
                                         @endif
                                     </tr>
                                 @endforeach
